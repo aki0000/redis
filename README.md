@@ -7,6 +7,7 @@ bash Init_dir.sh
 
 
 ## Test for Redis HA component (master & slave)
+Need to execute bellow commands unser `/redis-master-slave`.
 ```
 # Start docker compose
 docker compose up
@@ -31,6 +32,7 @@ docker exec -it redis-slave1 redis-cli get str
 ```
 
 ## Test for Redis Sentinal component (master & slave & sentinal)
+Need to execute bellow commands unser `/redis-sentinal`.
 ```
 # Start docker compose
 docker compose up
