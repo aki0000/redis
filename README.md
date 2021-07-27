@@ -30,7 +30,7 @@ docker exec -it redis-master-slave-slave1 redis-cli get str
 Need to execute bellow commands unser `/redis-sentinal`.
 ```
 # Start docker compose
-docker compose up
+docker compose up --scale slave=2
 
 # Exec container for Redis
 
