@@ -1,16 +1,11 @@
 # Redis
 Test for redis master and slave
-```
-# Init directories for each redis & make it
-bash Init_dir.sh
-```
-
 
 ## Test for Redis HA component (master & slave)
 Need to execute bellow commands unser `/redis-master-slave`.
 ```
 # Start docker compose
-docker compose up
+docker compose up --scale slave=2
 
 # Exec container for Redis
 docker exec -it <container name> /bin/bash
@@ -21,13 +16,13 @@ docker exec -it <container name> redis-cli set <key> <value>
 docker exec -it <container name> redis-cli get <key> 
 
 # For example
-docker exec -it redis-master redis-cli set str "test"
+docker exec -it redis-master-slave-master1 redis-cli set str "test"
 OK
-docker exec -it redis-master redis-cli get str
+docker exec -it redis-master-slave-master1 redis-cli get str
 "test"
-docker exec -it redis-slave0 redis-cli get str
+docker exec -it redis-master-slave-slave0 redis-cli get str
 "test"
-docker exec -it redis-slave1 redis-cli get str
+docker exec -it redis-master-slave-slave1 redis-cli get str
 "test"
 ```
 
