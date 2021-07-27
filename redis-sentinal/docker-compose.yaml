@@ -1,5 +1,6 @@
 version: '3'
-services:
+services:  
+  # Master & Slave
   redis-master:
     image: "redis:latest"
     hostname: redis-master
@@ -26,4 +27,13 @@ services:
       - "6579:6479"
     volumes:
       - "./data/redis-slave1:/data" 
-    command: redis-server --slaveof redis-master 6379
+    command: redis-server --slaveof redis-master 6379  
+  # Sentinel
+  redis-sentinel:
+    build: .
+    hostname: redis-sentinel
+    container_name: redis-sentinel
+    links:
+      - redis-master
+      - redis-slave0
+      - redis-slave1
